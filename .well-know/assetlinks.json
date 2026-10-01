@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.simbinami.twa",
+        "sha256_cert_fingerprints": ["64:B4:F3:81:19:62:BD:28:C0:9C:48:48:C1:6B:87:CD:F8:A4:93:35:87:AD:15:B6:D0:42:0E:02:19:24:2C:06"]
+      }
+    }]
