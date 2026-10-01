@@ -1,0 +1,98 @@
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  background: #101923;
+  color: #f3f6fa;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 760px; margin: auto; padding: 24px 16px calc(24px + env(safe-area-inset-bottom)); }
+header { text-align: center; margin-bottom: 24px; }
+h1 { font-size: clamp(1.5rem, 5vw, 2rem); margin: 8px 0; }
+header p { color: #b9c8d7; margin: 8px 0; }
+.eyebrow { font-size: .8rem; letter-spacing: .15em; }
+
+.players { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.player { min-width: 0; padding: 18px 12px; border-radius: 20px; border: 1px solid var(--accent); background: #192735; }
+.player-one { --accent: #64ceee; }
+.player-two { --accent: #ffbd78; }
+label { display: block; color: var(--accent); font-size: .85rem; margin-bottom: 8px; }
+input { width: 100%; min-height: 44px; border: 1px solid #617486; border-radius: 8px; padding: 8px; background: #101923; color: #fff; font: inherit; }
+
+.round-picker { text-align: center; margin-bottom: 20px; }
+.round-picker .swatch-title { margin: 0 0 8px; }
+.round-options { display: flex; justify-content: center; gap: 8px; }
+.round-options button { min-width: 64px; font-size: 1.1rem; }
+.round-options button[aria-pressed="true"] { background: #f3f6fa; color: #101923; border-color: #f3f6fa; }
+
+.swatch-title { margin: 12px 0 6px; font-size: .8rem; color: #b9c8d7; }
+.champs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; max-height: 300px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #617486 transparent; border-radius: 8px; }
+.champs::-webkit-scrollbar { width: 6px; }
+.champs::-webkit-scrollbar-thumb { background: #617486; border-radius: 999px; }
+.champ-btn { display: flex; flex-direction: column; align-items: center; min-height: 0; padding: 8px 2px 6px; background: #101923; border: 2px solid transparent; border-radius: 12px; color: #b9c8d7; }
+.champ-btn img { width: 52px; height: 52px; border-radius: 50%; }
+.champ-btn span { margin-top: 6px; font-size: .68rem; font-weight: 650; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.champ-btn[aria-pressed="true"] { border-color: var(--accent, #fff); color: var(--accent, #fff); }
+.champ-btn:disabled { opacity: .2; cursor: default; }
+
+#start { width: 100%; margin-top: 20px; min-height: 60px; font-size: 1.15rem; font-weight: 750; background: #f3f6fa; color: #101923; border: none; }
+
+.game-top { display: flex; justify-content: flex-end; margin-bottom: 4px; }
+#open-setup { min-height: 40px; padding: 0 16px; border-radius: 999px; background: transparent; border: 1px solid #617486; color: #b9c8d7; font-weight: 600; }
+.round-dots { display: flex; justify-content: center; gap: 8px; min-height: 12px; margin-bottom: 12px; }
+.round-dots span { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--accent); opacity: .35; }
+.round-dots span.won { background: var(--accent); opacity: 1; }
+.champ-avatar { display: block; width: 72px; height: 72px; margin: 0 auto 8px; border-radius: 50%; border: 2px solid var(--accent); }
+.champ-avatar.victory { width: 96px; height: 96px; border-width: 3px; }
+.player-name { margin: 0 0 4px; text-align: center; font-weight: 700; color: var(--accent); }
+
+output { display: block; text-align: center; font-size: clamp(3rem, min(16vw, 18vh), 6rem); font-weight: 750; line-height: 1.4; font-variant-numeric: tabular-nums; color: var(--accent); }
+.score-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+button { min-height: 52px; border: 1px solid #617486; border-radius: 12px; background: #26394b; color: #fff; font: inherit; font-weight: 650; cursor: pointer; touch-action: manipulation; }
+.score-buttons button { font-size: 2rem; }
+.score-buttons button[data-delta="1"] { background: var(--accent); color: #101923; border-color: var(--accent); }
+button:active:not(:disabled) { transform: scale(.97); }
+button:disabled { opacity: .4; cursor: default; }
+:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+
+.status { min-height: 3em; text-align: center; color: #e7ce93; line-height: 1.5; margin: 16px 0; }
+.actions { display: grid; grid-template-columns: 1fr; gap: 12px; }
+aside { background: #192735; border-radius: 12px; padding: 16px; margin-top: 24px; line-height: 1.5; font-size: .9rem; }
+aside p { color: #b9c8d7; margin: 8px 0 0; }
+footer { color: #b9c8d7; text-align: center; font-size: .8rem; margin-top: 20px; }
+
+#victory-screen { text-align: center; }
+#victory-screen header { margin-top: 24px; }
+.victory-card { margin: 0 auto; max-width: 420px; padding: 28px 16px; border-radius: 20px; border: 1px solid var(--accent, #64ceee); background: #192735; --accent: #64ceee; }
+.victory-label { margin: 0; color: #b9c8d7; letter-spacing: .15em; font-size: .8rem; }
+.victory-round-label { margin: 12px 0 2px; color: #b9c8d7; font-size: .8rem; letter-spacing: .1em; }
+.victory-rounds { margin: 0; font-size: 1.3rem; font-weight: 750; }
+.victory-name { margin: 8px 0 0; font-size: clamp(1.4rem, 6vw, 2rem); font-weight: 700; color: var(--accent); }
+#victory-score { margin-bottom: 8px; color: var(--accent); }
+#new-match { margin-top: 24px; min-height: 60px; font-size: 1.15rem; font-weight: 750; background: #f3f6fa; color: #101923; border: none; }
+#new-match, #back-to-score { width: 100%; }
+#back-to-score { margin-top: 12px; min-height: 48px; background: transparent; border: 1px solid #617486; color: #b9c8d7; font-weight: 600; }
+
+@media (max-height: 700px) {
+  main { padding-top: 12px; }
+  header { margin-bottom: 12px; }
+  h1 { margin: 4px 0; }
+  header p { margin: 4px 0; }
+  .champ-avatar { width: 56px; height: 56px; margin-bottom: 6px; }
+  .round-dots { margin-bottom: 8px; }
+  aside { margin-top: 16px; }
+}
+
+@media (min-width: 900px) and (min-height: 800px) {
+  main { padding-top: 48px; }
+  .player { padding: 28px 20px; }
+  .champ-btn img { width: 60px; height: 60px; }
+}
+
+@media (max-width: 350px) {
+  main { padding: 16px 10px; }
+  .players { gap: 8px; }
+  .player { padding: 12px 8px; }
+  .champs { gap: 6px; }
+}

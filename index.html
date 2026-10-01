@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101923">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="manifest" href="manifest.json">
+    <title>Riftbound · Contador</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main>
+
+      <!-- Pantalla de configuración de jugadores -->
+      <section id="setup-screen">
+        <header>
+          <p class="eyebrow">RIFTBOUND · 1 CONTRA 1</p>
+          <h1>Contador de puntos</h1>
+          <p>Objetivo: 8 puntos</p>
+        </header>
+
+        <div class="round-picker">
+          <p class="swatch-title">¿Cuántas rondas vais a jugar?</p>
+          <div class="round-options" id="round-options" role="group" aria-label="Número de rondas"></div>
+        </div>
+
+        <div class="players">
+          <article class="player player-one">
+            <label for="setup-name-0">Jugador 1</label>
+            <input id="setup-name-0" maxlength="30" value="Jugador 1" autocomplete="off">
+            <p class="swatch-title">Campeón</p>
+            <div class="champs" id="champs-0" role="group" aria-label="Campeones del jugador 1"></div>
+          </article>
+          <article class="player player-two">
+            <label for="setup-name-1">Jugador 2</label>
+            <input id="setup-name-1" maxlength="30" value="Jugador 2" autocomplete="off">
+            <p class="swatch-title">Campeón</p>
+            <div class="champs" id="champs-1" role="group" aria-label="Campeones del jugador 2"></div>
+          </article>
+        </div>
+
+        <button id="start" type="button">Empezar partida</button>
+
+        <footer id="storage-note">Los nombres, campeones, rondas y puntos se guardan en este navegador.</footer>
+      </section>
+
+      <!-- Pantalla de partida -->
+      <section id="game-screen" hidden>
+        <div class="game-top">
+          <button id="open-setup" type="button">Salir de la partida</button>
+        </div>
+        <header>
+          <p class="eyebrow">RIFTBOUND · 1 CONTRA 1</p>
+          <h1>Partida en curso</h1>
+          <p id="round-heading">Ronda 1 de 1</p>
+        </header>
+
+        <section class="players" aria-label="Marcador">
+          <article class="player player-one">
+            <div class="round-dots" id="rounds-0" aria-label="Rondas ganadas por el jugador 1"></div>
+            <img class="champ-avatar" id="game-champ-0" alt="Campeón del jugador 1">
+            <p class="player-name" id="game-name-0">Jugador 1</p>
+            <output id="score-0" aria-label="Puntos del jugador 1">0</output>
+            <div class="score-buttons">
+              <button type="button" data-player="0" data-delta="-1" aria-label="Restar un punto al jugador 1">−</button>
+              <button type="button" data-player="0" data-delta="1" aria-label="Sumar un punto al jugador 1">+</button>
+            </div>
+          </article>
+          <article class="player player-two">
+            <div class="round-dots" id="rounds-1" aria-label="Rondas ganadas por el jugador 2"></div>
+            <img class="champ-avatar" id="game-champ-1" alt="Campeón del jugador 2">
+            <p class="player-name" id="game-name-1">Jugador 2</p>
+            <output id="score-1" aria-label="Puntos del jugador 2">0</output>
+            <div class="score-buttons">
+              <button type="button" data-player="1" data-delta="-1" aria-label="Restar un punto al jugador 2">−</button>
+              <button type="button" data-player="1" data-delta="1" aria-label="Sumar un punto al jugador 2">+</button>
+            </div>
+          </article>
+        </section>
+
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+        <nav class="actions" aria-label="Acciones de la partida">
+          <button id="reset" type="button">Nueva partida</button>
+        </nav>
+        <aside>
+          <strong>Recuerda el último punto</strong>
+          <p>Si el octavo punto procede de una conquista, debes haber puntuado los demás campos ese turno. Si no, robas una carta en su lugar.</p>
+          <p>Marcador manual: los jugadores comprueban la validez de los puntos.</p>
+        </aside>
+      </section>
+
+      <!-- Pantalla de victoria -->
+      <section id="victory-screen" hidden>
+        <header>
+          <p class="eyebrow">RIFTBOUND · 1 CONTRA 1</p>
+          <h1>¡Victoria!</h1>
+        </header>
+        <div class="victory-card">
+          <img class="champ-avatar victory" id="victory-champ" alt="Campeón del ganador">
+          <p class="victory-label">GANA</p>
+          <p class="victory-name" id="victory-name"></p>
+          <output id="victory-score" aria-label="Puntos del ganador">8</output>
+          <p class="victory-round-label">Marcador de rondas</p>
+          <p class="victory-rounds" id="victory-rounds"></p>
+        </div>
+        <button id="new-match" type="button">Nueva partida</button>
+        <button id="back-to-score" type="button" class="secondary">Volver al marcador</button>
+      </section>
+
+    </main>
+  </body>
+</html>
